@@ -27,15 +27,20 @@ const isEmail = (email) => {
 
 router.post('/register', async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email, password, nickname } = req.body;
         if (!isEmail(email)) {
             throw new Error('Email must be a valid email address.');
         }
         if (typeof password !== 'string') {
             throw new Error('Password must be a string.');
         }
-        const userRole = 'new_user'
-        const user = new User({ email, password, userRole });
+
+        const userRole = 0
+        const userLvl = 0
+        const userExp = 0
+
+
+        const user = new User({ email, password, nickname, userRole, userLvl, userExp });
         const persistedUser = await user.save();
 
         res.status(201).json({

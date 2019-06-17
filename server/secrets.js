@@ -1,5 +1,5 @@
 const secrets = {
-    dbUri: process.env.DB_URI || 'mongodb://localhost:27017/myapp',
+    dbUri: process.env.DB_URI || 'mongodb://localhost:27017/cyberApp',
 };
 
 const getSecret = (key) => secrets[key];

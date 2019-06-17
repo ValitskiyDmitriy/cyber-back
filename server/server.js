@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -20,6 +21,8 @@ mongoose
         (err) => console.log('Error connecting to mongoDB', err)
     );
 const app = express();
+app.use(cors());
+app.options('*', cors());
 const port = process.env.PORT || 3000;
 //sets up the middleware for parsing the bodies and cookies off of the requests
 app.use(bodyParser.json());
