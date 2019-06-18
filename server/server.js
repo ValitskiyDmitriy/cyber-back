@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const { getSecret } = require('./secrets');
 //other imports
 const usersRoute = require('../routes/users');
+const characterRoute = require('../routes/character');
+const dictionaryRoute = require('../routes/dictionary');
 //other app.use statements
 
 mongoose.Promise = global.Promise;
@@ -28,6 +30,8 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use('/api/users', usersRoute);
+app.use('/api/character', characterRoute);
+app.use('/api/dictionary', dictionaryRoute);
 app.get('/', function(req, res){
     res.json({"tutorial" : "Build REST API with node.js"});
 });

@@ -5,10 +5,10 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const jwtConfig = require('../config/config');
 
-generateJwt = function (email) {
+generateJwt = function (email, id) {
     return jwt.sign(
         {
-            username: email
+            id: id
         }, jwtConfig.development.JWT_SECRET,
         {
             expiresIn: jwtConfig.development.JWT_EXP
@@ -97,7 +97,7 @@ router.post('/login', async (req, res) => {
         res.json({
             title: 'Login Successful',
             detail: 'Successfully validated user credentials',
-            json: ({ "token": generateJwt(email) })
+            json: ({ "token": generateJwt(email, user._id) })
         });
     } catch (err) {
         res.status(401).json({

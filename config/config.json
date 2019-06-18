@@ -2,7 +2,7 @@
     "development" :
     {
         "JWT_SECRET" : "SECRET#123",
-        "JWT_EXP" : "2m"
+        "JWT_EXP" : "60m"
     },
 
     "production" : {
